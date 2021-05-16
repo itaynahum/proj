@@ -6,7 +6,7 @@ Log Date: 22:50:00 15/05/21
 """
 
 
-from Taroot.Interfaces.IHandler.IDBHandler import IDBHandler
+from proj.Tar.Interfaces.IHandler.IDBHandler import IDBHandler
 
 
 class NoSqlHandler(IDBHandler):

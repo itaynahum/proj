@@ -6,9 +6,9 @@ Log Date: 22:50:00 15/05/21
 """
 import os
 
-from Utilities.utilities import validate_types, remove_file
-from Config.config import JSON_TABLE_NAME, SUPPORTED_INPUT_FILES_TYPES, DBNAME
-from Utilities.consts import *
+from proj.Utilities.utilities import validate_types, remove_file
+from proj.Config.config import JSON_TABLE_NAME, SUPPORTED_INPUT_FILES_TYPES, DBNAME
+from proj.Utilities.consts import *
 
 EXTENSION_INDEX = 1
 FIELDS_INDEX = 0

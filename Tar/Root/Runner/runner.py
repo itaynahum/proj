@@ -8,7 +8,7 @@ Log Date: 22:50:00 15/05/21
 import sys
 import time
 
-from Utilities.consts import *
+from proj.Utilities.consts import *
 
 
 class Runner:

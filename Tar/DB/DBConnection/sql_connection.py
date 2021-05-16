@@ -7,7 +7,7 @@ Log Date: 22:50:00 15/05/21
 
 import pyodbc
 
-from Taroot.Interfaces.IDBConnection.mssql_connection import ISqlConnection
+from proj.Tar.Interfaces.IDBConnection.mssql_connection import ISqlConnection
 
 
 class SqlConnection(ISqlConnection):

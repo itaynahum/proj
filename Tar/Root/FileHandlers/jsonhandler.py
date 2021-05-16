@@ -7,7 +7,7 @@ Log Date: 22:50:00 15/05/21
 
 import json
 
-from Taroot.Interfaces.IHandler.IFileHandler import IFileHandler
+from proj.Tar.Interfaces.IHandler.IFileHandler import IFileHandler
 
 
 class JsonHandler(IFileHandler):

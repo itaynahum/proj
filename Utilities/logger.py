@@ -5,7 +5,7 @@ Owner: Itay Nahum
 Log Date: 22:50:00 15/05/21
 """
 import logging
-import Config.config as cfg
+import proj.Config.config as cfg
 
 from logging.handlers import RotatingFileHandler
 
