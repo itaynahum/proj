@@ -18,18 +18,28 @@ RELEVANT_FILE_INFO = 'Found relevant file information inside: {0}'
 SUCCESSFULLY_REMOVED_FILE = 'Removed file from directory...'
 INSERTION_ERROR = 'An error occurred while trying to insert data into the table...\r\n\tException: {0}'
 FINISHED_PARSING_FILES = 'Finished parsing files. Continuing...'
+ERROR_READING_FILES_DATA = 'An error occurred while reading files data...\r\n\tException: {0}'
 
 # SQL Commands
-CREATE_JSON_TABLE = '''
-                                 CREATE TABLE {0}.dbo.{1} (
-                                        timestamp DATETIME NOT NULL ,
-                                        name NVARCHAR NOT NULL ,
-                                        telemetry_id NVARCHAR NOT NULL ,
-                                        generated_number FLOAT NOT NULL 
-                                );
-                    '''
+CREATE_JSON_TABLE = """
+                        CREATE TABLE {0}.dbo.{1} (
+                            timestamp varchar(120), 
+                            name varchar(150), 
+                            telemetry_id varchar(150), 
+                            generated_number FLOAT)
+                        """
+
+'''
+     CREATE TABLE {0}.dbo.{1} (
+            timestamp VARCHAR(120) NOT NULL ,
+            name VARCHAR(120) NOT NULL ,
+            telemetry_id VARCHAR(120) NOT NULL ,
+            generated_number FLOAT NOT NULL 
+    );
+'''
+
 
 CREATE_DATABASE = 'CREATE DATABASE {0}'
 
-INSERT_INFORMATION = """INSERT INTO {0}.dbo.{1} {2} VALUES (?,?,?,?)"""
+INSERT_INFORMATION = "INSERT INTO {0}.dbo.{1} {2} VALUES (?,?,?,?)"
 # 0 - database 1 - table, 2 - fields, 3 - values

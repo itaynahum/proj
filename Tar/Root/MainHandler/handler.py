@@ -26,15 +26,14 @@ class Handler:
         self.dbhandlers = dbhandlers
         self.readmode = readmode
         self.logger = logger
-        self.formatted_data = list()
 
-    def insert_data(self):
+    def insert_data(self, formatted_data):
         """
         functions which uses the selected sql server and inserts data
-        :param data_tuple: The data modified before insertions. Contains fields and values.
+        :param formatted_data: The data modified before insertions. Contains fields and values.
         :return: None
         """
-        for data_tuple in self.formatted_data:
+        for data_tuple in formatted_data:
             try:
                 fields, values = data_tuple[FIELDS_INDEX], data_tuple[VALUES_INDEX]
                 self.dbhandlers.insert(command=(INSERT_INFORMATION.format(DBNAME, JSON_TABLE_NAME, fields), values),
@@ -49,11 +48,14 @@ class Handler:
         :param filepath: The path of the file
         :return: Two tuples contains field names and values, ready for insertion.
         """
-        with open(filepath, self.readmode) as opened_file:
-            filename, filesextension = os.path.splitext(filepath)
-            files_data = opened_file.read()
-            fields, values = self.filehandlers[filesextension[EXTENSION_INDEX:]].handle(files_data)
-            return fields, values
+        try:
+            with open(filepath, self.readmode) as opened_file:
+                filename, filesextension = os.path.splitext(filepath)
+                files_data = opened_file.read()
+                fields, values = self.filehandlers[filesextension[EXTENSION_INDEX:]].handle(files_data)
+                return fields, values
+        except (IOError, IndexError, AttributeError) as error:
+            self.logger.error(ERROR_READING_FILES_DATA.format(error))
 
     def _get_input_files_list(self):
         """
@@ -70,12 +72,13 @@ class Handler:
         :param files_list: List of files.
         :return: None
         """
+        formatted_data = list()
         for f in files_list:
-            self.formatted_data.append(self._wrap_data(f))
+            formatted_data.append(self._wrap_data(f))
             self.logger.debug(RELEVANT_FILE_INFO.format(f))
             remove_file(f)
             self.logger.debug(SUCCESSFULLY_REMOVED_FILE)
-        self.insert_data()
+        self.insert_data(formatted_data)
 
     def handle(self):
         files_list = list(self._get_input_files_list())
