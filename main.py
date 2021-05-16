@@ -19,7 +19,7 @@ from Utilities.utilities import validate_folders
 from Tar.DB.DBCreator.db_creator import DBCreator
 
 validate_folders([TARSIUM_INPUT_PATH, LOGFILE_DIR])
-# dsadas
+
 
 def _create_tables(dbcreator_obj):
     """
