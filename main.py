@@ -7,16 +7,16 @@ Log Date: 22:50:00 15/05/21
 
 from Config.config import *
 from Utilities.consts import *
-from Taroot.DB.DBConnection.sql_connection import SqlConnection
-from Taroot.DB.DBHandler.db_handlers import SqlHandler
+from Tar.DB.DBConnection.sql_connection import SqlConnection
+from Tar.DB.DBHandler.db_handlers import SqlHandler
 from Utilities.logger import InitRotatingLogger
-from Taroot.Root.MainHandler.handler import Handler
-from Taroot.Root.FileHandlers.pcaphandler import PcapHandler
-from Taroot.Root.FileHandlers.jsonhandler import JsonHandler
-from Taroot.DB.DBHandler.db_handler import DBHandler
-from Taroot.Root.Runner.runner import Runner
+from Tar.Root.MainHandler.handler import Handler
+from Tar.Root.FileHandlers.pcaphandler import PcapHandler
+from Tar.Root.FileHandlers.jsonhandler import JsonHandler
+from Tar.DB.DBHandler.db_handler import DBHandler
+from Tar.Root.Runner.runner import Runner
 from Utilities.utilities import validate_folders
-from Taroot.DB.DBCreator.db_creator import DBCreator
+from Tar.DB.DBCreator.db_creator import DBCreator
 
 validate_folders([TARSIUM_INPUT_PATH, LOGFILE_DIR])
 
