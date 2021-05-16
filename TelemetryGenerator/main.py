@@ -1,8 +1,8 @@
 
-from TelemetryGenerator.Utils.Logger import InitLogger
-from TelemetryGenerator.Utils.Config import Config
-from TelemetryGenerator.Utils.Validator import directory_validator
-from TelemetryGenerator.Utils.Runner import Runner
+from proj.TelemetryGenerator.Utils.Logger import InitLogger
+from proj.TelemetryGenerator.Utils.Config import Config
+from proj.TelemetryGenerator.Utils.Validator import directory_validator
+from proj.TelemetryGenerator.Utils.Runner import Runner
 
 
 if __name__ == "__main__":

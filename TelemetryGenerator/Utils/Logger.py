@@ -1,5 +1,5 @@
 import logging
-from TelemetryGenerator.Utils.Config import Config
+from proj.TelemetryGenerator.Utils.Config import Config
 
 from logging.handlers import RotatingFileHandler
 

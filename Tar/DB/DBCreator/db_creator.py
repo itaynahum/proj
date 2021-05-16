@@ -17,9 +17,9 @@ class DBCreator:
         try:
             self.connection.execute(CREATE_JSON_TABLE.format(db_name, tablename))
             self.connection.commit()
+            self.logger.debug(SUCCESSFULLY_CREATED_TABLE.format(tablename, db_name))
         except Exception as error:
-            self.logger.error(Exception(f"Table {tablename} already exists...\r\n\t"
-                                        f"{error}"))
+            self.logger.error(TABLE_ALREADY_EXISTS.format(tablename, error))
 
     def create_pcap_table(self):
         raise NotImplementedError()
@@ -27,6 +27,6 @@ class DBCreator:
     def create_database(self, database_name):
         try:
             self.connection.execute(CREATE_DATABASE.format(database_name))
+            self.logger.debug(SUCCESSFULLY_CREATED_DATABASE.format(database_name))
         except Exception as error:
-            self.logger.error(Exception(f"Database {database_name} already exists...\r\n\t"
-                                        f"{error}"))
+            self.logger.error(DATABASE_ALREADY_EXISTS.format(database_name, error))

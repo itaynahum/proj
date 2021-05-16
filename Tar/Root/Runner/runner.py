@@ -29,8 +29,9 @@ class Runner:
             try: 
                 self.logger.info(RUNNING_LOG)
                 self.handler.handle()
-            except Exception:
+            except Exception as error:
                 self.logger.critical(msg=sys.exc_info())
+                self.logger.critical(error)
                 raise
             self.sleep()
 

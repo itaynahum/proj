@@ -6,9 +6,9 @@ import datetime
 
 from datetime import date
 
-from TelemetryGenerator.Procedures.TelemetryCreator import TelemetryCreator
-from TelemetryGenerator.Procedures.TelemetryInfo import TelemetryInfo
-from TelemetryGenerator.Utils.Config import Config
+from proj.TelemetryGenerator.Procedures.TelemetryCreator import TelemetryCreator
+from proj.TelemetryGenerator.Procedures.TelemetryInfo import TelemetryInfo
+from proj.TelemetryGenerator.Utils.Config import Config
 
 
 class Runner:

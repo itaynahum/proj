@@ -35,9 +35,12 @@ class Handler:
         :return: None
         """
         for data_tuple in self.formatted_data:
-            fields, values = data_tuple[FIELDS_INDEX], data_tuple[VALUES_INDEX]
-            self.dbhandlers.insert(command=(INSERT_INFORMATION.format(DBNAME, JSON_TABLE_NAME, fields), values),
-                                   handler_type='sql')
+            try:
+                fields, values = data_tuple[FIELDS_INDEX], data_tuple[VALUES_INDEX]
+                self.dbhandlers.insert(command=(INSERT_INFORMATION.format(DBNAME, JSON_TABLE_NAME, fields), values),
+                                       handler_type='sql')
+            except Exception as error:
+                self.logger.error(INSERTION_ERROR.format(error))
 
     def _wrap_data(self, filepath):
         """
@@ -69,9 +72,13 @@ class Handler:
         """
         for f in files_list:
             self.formatted_data.append(self._wrap_data(f))
+            self.logger.debug(RELEVANT_FILE_INFO.format(f))
             remove_file(f)
+            self.logger.debug(SUCCESSFULLY_REMOVED_FILE)
         self.insert_data()
 
     def handle(self):
         files_list = list(self._get_input_files_list())
+        self.logger.info(NEW_FILES_COUNT.format(len(files_list), self.filepath))
         self._parse_data(files_list)
+        self.logger.info(FINISHED_PARSING_FILES)
