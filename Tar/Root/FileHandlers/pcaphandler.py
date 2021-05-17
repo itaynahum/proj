@@ -1,6 +1,6 @@
 import struct
 
-from proj.Tar.Interfaces.IHandler.IFileHandler import IFileHandler
+from Tar.Interfaces.IHandler.IFileHandler import IFileHandler
 
 
 class PcapHandler(IFileHandler):

@@ -5,7 +5,7 @@ Owner: Itay Nahum
 Log Date: 22:50:00 15/05/21
 """
 
-from proj.Utilities.consts import *
+from Utilities.consts import *
 
 
 class DBCreator:

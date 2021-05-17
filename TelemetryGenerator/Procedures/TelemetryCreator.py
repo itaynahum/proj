@@ -1,7 +1,7 @@
 import json
 import os
 
-from proj.TelemetryGenerator.Utils.Validator import clean_old_files
+from TelemetryGenerator.Utils.Validator import clean_old_files
 
 
 class TelemetryCreator:

@@ -6,9 +6,9 @@ Log Date: 22:50:00 15/05/21
 """
 import os
 
-from proj.Utilities.utilities import validate_types, remove_file
-from proj.Config.config import JSON_TABLE_NAME, SUPPORTED_INPUT_FILES_TYPES, DBNAME
-from proj.Utilities.consts import *
+from Utilities.utilities import validate_types, remove_file, refactor_tuple
+from Config.config import JSON_TABLE_NAME, SUPPORTED_INPUT_FILES_TYPES, DBNAME
+from Utilities.consts import *
 
 EXTENSION_INDEX = 1
 FIELDS_INDEX = 0
@@ -36,8 +36,10 @@ class Handler:
         for data_tuple in formatted_data:
             try:
                 fields, values = data_tuple[FIELDS_INDEX], data_tuple[VALUES_INDEX]
-                self.dbhandlers.insert(command=(INSERT_INFORMATION.format(DBNAME, JSON_TABLE_NAME, fields), values),
+                fields = refactor_tuple(fields)
+                self.dbhandlers.insert(command=INSERT_INFORMATION.format(DBNAME, JSON_TABLE_NAME, fields, values),
                                        handler_type='sql')
+                self.logger.info(SUCCESSFULLY_INSERTED_INTO_DATABASE)
             except Exception as error:
                 self.logger.error(INSERTION_ERROR.format(error))
 

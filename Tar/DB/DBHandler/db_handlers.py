@@ -6,7 +6,7 @@ Log Date: 22:50:00 15/05/21
 """
 
 
-from proj.Tar.Interfaces.IHandler.IDBHandler import IDBHandler
+from Tar.Interfaces.IHandler.IDBHandler import IDBHandler
 
 
 class NoSqlHandler(IDBHandler):
@@ -25,8 +25,7 @@ class SqlHandler(IDBHandler):
         super().__init__(connection)
 
     def insert(self, command):
-        command_body, values = command[0], command[1]
-        self.connection.execute(command_body, values)
+        self.connection.execute(command)
         self.connection.commit()
 
     def query(self, command):

@@ -43,7 +43,7 @@ def main():
     dbcreator = DBCreator(connection=master_db_connection, logger=logger)
     dbcreator.create_database(DBNAME)
     _create_tables(dbcreator)
-    connection = SqlConnection(DRIVER, SERVERNAME, DBNAME).connect()
+    connection = SqlConnection(DRIVER, SERVERNAME, DBNAME).connect(autocommit=False)
     logger.info(DATABASE_CONNECTION.format(DBNAME))
     filehandlers = dict(zip(SUPPORTED_INPUT_FILES_TYPES,
                             [JsonHandler(), PcapHandler()]))

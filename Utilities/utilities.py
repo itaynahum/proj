@@ -10,6 +10,12 @@ INPUT_FILES_INDEX = 1
 EXTENSION_INDEX = 1
 
 
+def refactor_tuple(tup):
+    stringed_tup = str(tup)
+    stringed_tup = stringed_tup.replace('\'', '')
+    return stringed_tup
+
+
 def remove_file(filepath):
     os.remove(filepath)
 
