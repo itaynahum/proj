@@ -27,8 +27,9 @@ TIMEOUT = 3
 TARSIUM_INPUT_PATH = r'C:\Tarsium\Input'
 INPUT_FILES_READMODE = 'rb'
 SUPPORTED_INPUT_FILES_TYPES = [
-    'json'
-]  # 'pcap'
+    'json',
+    'pcap'
+]
 
 # SQL info
 DRIVER = "SQL Server"
@@ -36,5 +37,6 @@ SERVERNAME = "Nahum"
 DBNAME = "Tar"
 ROOT_DBNAME = "master"
 JSON_TABLE_NAME = 'JSONInfo'
+PCAP_TABLE_NAME = 'PCAPInfo'
 TABLE_NAMES = dict(zip(SUPPORTED_INPUT_FILES_TYPES,
-                       [JSON_TABLE_NAME]))
+                       [JSON_TABLE_NAME, PCAP_TABLE_NAME]))

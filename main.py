@@ -8,7 +8,8 @@ Log Date: 22:50:00 15/05/21
 from Config.config import *
 from Utilities.consts import *
 from Tar.DB.DBConnection.sql_connection import SqlConnection
-from Tar.DB.DBHandler.db_handlers import SqlHandler
+from Tar.DB.DBConnection.nosql_connection import NoSqlConnection
+from Tar.DB.DBHandler.db_handlers import SqlHandler, NoSqlHandler
 from Utilities.logger import InitRotatingLogger
 from Tar.Root.MainHandler.handler import Handler
 from Tar.Root.FileHandlers.pcaphandler import PcapHandler
@@ -17,8 +18,6 @@ from Tar.DB.DBHandler.db_handler import DBHandler
 from Tar.Root.Runner.runner import Runner
 from Utilities.utilities import validate_folders
 from Tar.DB.DBCreator.db_creator import DBCreator
-
-validate_folders([TARSIUM_INPUT_PATH, LOGFILE_DIR])
 
 
 def _create_tables(dbcreator_obj):
@@ -36,6 +35,7 @@ def main():
     Main Builder
     :return: None
     """
+    validate_folders([TARSIUM_INPUT_PATH, LOGFILE_DIR])
     logger = InitRotatingLogger()
     logger = logger.get_logger()
     logger.info(LOGGER_CREATION)
@@ -43,12 +43,14 @@ def main():
     dbcreator = DBCreator(connection=master_db_connection, logger=logger)
     dbcreator.create_database(DBNAME)
     _create_tables(dbcreator)
-    connection = SqlConnection(DRIVER, SERVERNAME, DBNAME).connect(autocommit=False)
+    sql_connection = SqlConnection(DRIVER, SERVERNAME, DBNAME).connect(autocommit=False)
+    nosql_connection = NoSqlConnection().connect()
     logger.info(DATABASE_CONNECTION.format(DBNAME))
     filehandlers = dict(zip(SUPPORTED_INPUT_FILES_TYPES,
                             [JsonHandler(), PcapHandler()]))
     db_handlers = {
-        'sql': SqlHandler(connection=connection)
+        'sql': SqlHandler(connection=sql_connection),
+        'nosql': NoSqlHandler(connection=nosql_connection)
     }
     dbhandlers = DBHandler(
         logger=logger,

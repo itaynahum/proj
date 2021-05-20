@@ -28,7 +28,15 @@ CREATE_JSON_TABLE = """
                             name varchar(150), 
                             telemetry_id varchar(150), 
                             generated_number FLOAT)
-                        """
+                    """
+
+CREATE_PCAP_TABLE = """
+                        CREATE TABLE {0}.dbo.{1} (
+                            
+                        )
+                    
+                    """
+
 
 CREATE_DATABASE = 'CREATE DATABASE {0}'
 
