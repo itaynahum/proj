@@ -30,6 +30,9 @@ SUPPORTED_INPUT_FILES_TYPES = [
     'json',
     'pcap'
 ]
+BASE_REQUEST_URL = 'http://127.0.0.1:5000'
+URL_PATH = '/tarsium/v1/project/api/'
+FULL_PATH = f'{BASE_REQUEST_URL}{URL_PATH}'
 
 # SQL info
 DRIVER = "SQL Server"

@@ -7,15 +7,18 @@ Log Date: 22:50:00 15/05/21
 
 import pyodbc
 
-from Tar.Interfaces.IDBConnection.mssql_connection import ISqlConnection
+from Tar.Interfaces.IDBConnection.mssql_connection import Connection
 
 
-class SqlConnection(ISqlConnection):
+class SqlConnection(Connection):
     """
     Class which creates connection objects.
     """
     def __init__(self, driver, servername, dbname, trusted_connection=True):
-        super().__init__(driver, servername, dbname, trusted_connection)
+        self.driver = driver
+        self.servername = servername
+        self.dbname = dbname
+        self.trusted_connection = trusted_connection
     
     def connect(self, autocommit=True):
         connection = pyodbc.connect(

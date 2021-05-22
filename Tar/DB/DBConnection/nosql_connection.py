@@ -1,5 +1,8 @@
 
-class NoSqlConnection:
+from Tar.Interfaces.IDBConnection.mssql_connection import Connection
+
+
+class NoSqlConnection(Connection):
     """
     Class which creates connection objects.
     """

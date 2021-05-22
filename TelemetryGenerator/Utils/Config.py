@@ -10,7 +10,7 @@ class Config:
     TELEMETRY_AMOUNT_LIMITATION = 100
 
     TELEMETRY_NAME_FORMAT = 'Tarsium_{}_{}'
-    TIMEOUT_BETWEEN_RUNS = 0.1
+    TIMEOUT_BETWEEN_RUNS = 1
 
     LOGGER_NAME = 'TelemetryGenerator'
     ENCODE_FILE_FORMAT = 'utf8'
